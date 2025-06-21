@@ -1,0 +1,41 @@
+# CI de Nível 01 - Disparo manual a partir de 1 clique
+
+# nome do nosso 'pipeline'
+name: 'Execução Manual'
+
+# regras de disparo (gatilhos/triggers)
+# gatilho de execução manual = workflow_dispatch
+
+on:
+  workflow_dispatch:
+
+# trabalhos/tarefas dentro do pipeline = jobs
+jobs:
+  tests:
+    #maquina que o job vai executar
+    runs-on: ubuntu-latest
+
+    # passos do script de build
+    steps:
+      # clone do projeto
+      - uses: actions/checkout@v4
+
+      # instalacao do node
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+
+      # instalacao das dependencias
+      - name: Instalando dependências
+        run: npm install
+
+      # executar os testes feito em aula
+      - name: Executando Testes feitos em aula
+        run: npx mocha ./testes/01-testes.js
+
+      - name: Executando Testes feitos em aula - força erro
+        run: npx mocha ./testes/02-testes.js
+      
+      # executar os testes entregue no trabalho final da disciplina de programacao JS
+      - name: Executando Testes do trabalho final da disciplina de JS
+        run: npx mocha ./trabalho-final/testes/trabalho-final.js
