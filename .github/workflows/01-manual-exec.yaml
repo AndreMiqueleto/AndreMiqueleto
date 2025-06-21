@@ -29,6 +29,9 @@ jobs:
       - name: Instalando dependências
         run: npm install
 
+      - name: Run tests with Mocha
+        run: npx mocha --reporter mochawesome
+
       # executar os testes feito em aula
       - name: Executando Testes feito em aula que passam
         run: npx mocha ./testes/01-testes.js
