@@ -41,9 +41,24 @@ jobs:
       - name: Executando Testes do trabalho final da disciplina de JS
         run: npx mocha ./trabalho-final/testes/trabalho-final.js
 
-      - name: Report JUnit de Execução dos Testes
-        uses: mikepenz/action-junit-report@v5
-        if: ${{ !cancelled() }}
+      # - name: Report JUnit de Execução dos Testes
+      #   uses: mikepenz/action-junit-report@v5
+      #   if: ${{ !cancelled() }}
+      #   with:
+      #     name: Report dos Testes unitários
+      #     path: test-results/results.xml
+
+      - uses: actions/upload-artifact@v4  # upload test results
+        name: Upload artifacts
+        if: ${{ !cancelled() }} 
         with:
-          name: Report dos Testes unitários
-          path: test-results/results.xml
+          name: test-results
+          path: test-results.json
+
+      - uses: dorny/test-reporter@v2
+        name: Publish test results
+        with:
+          artifact: test-results            
+          name: Mocha Tests                 
+          path: 'test-results.json'    
+          reporter: mocha-json  
