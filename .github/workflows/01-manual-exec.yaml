@@ -42,4 +42,4 @@ jobs:
         run: npx mocha ./trabalho-final/testes/trabalho-final.js
 
       - name: Run tests with Mocha
-        run: mocha --reporter mochawesome
+        run: npx mocha --reporter mochawesome
