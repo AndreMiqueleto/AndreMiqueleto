@@ -1,7 +1,7 @@
 # CI de Nível 01 - Disparo manual a partir de 1 clique
 
 # nome do nosso 'pipeline'
-name: 'Execução Manual dos testes unitarios com o Mocha'
+name: 'Testes unitarios com o Mocha'
 
 # regras de disparo (gatilhos/triggers)
 # gatilho de execução manual = workflow_dispatch
@@ -41,9 +41,9 @@ jobs:
       - name: Executando Testes do trabalho final da disciplina de JS
         run: npx mocha ./trabalho-final/testes/trabalho-final.js
 
-      # - name: Report JUnit de Execução dos Testes
-      #   uses: mikepenz/action-junit-report@v5
-      #   if: ${{ !cancelled() }}
-      #   with:
-      #     name: Report dos Testes unitários
-      #     path: test-results/results.xml
+      - name: Report JUnit de Execução dos Testes
+        uses: mikepenz/action-junit-report@v5
+        if: ${{ !cancelled() }}
+        with:
+          name: Report dos Testes unitários
+          path: test-results/results.xml
