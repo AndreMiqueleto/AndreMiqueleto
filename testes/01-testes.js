@@ -4,7 +4,7 @@
  *  it       -> implementacao do teste   
  * 
  */
-import {exibirNomeDogFormatado} from '../testes/testes-de-unidade'
+import {exibirNomeDogFormatado} from '../testes/testes-de-unidade.js'
 import assert from 'node:assert'
 
 describe('Testes do Projeto', () => {
