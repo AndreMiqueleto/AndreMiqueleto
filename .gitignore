@@ -1,5 +1,6 @@
 node_modules
 package-lock.json
 index.js
-/conceitos/
-/exercicios/
+/conceitos
+/exercicios
+.DS_Store
